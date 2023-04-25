@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EstudianteService } from '../../../services/estudiante.service';
 import { Estudiante } from '../../../model/Estudiante.model';
+import { Auth } from 'aws-amplify';
+import { Session } from 'protractor';
 
 @Component({
   selector: 'app-crud-estudiante',
@@ -16,6 +18,9 @@ export class CrudEstudianteComponent implements OnInit {
 
   ngOnInit() {
     this.getEstudiantes();
+    Auth.currentSession().then(session => {
+      console.log("session: ", session);
+    });
   }
 
   getEstudiantes(): void {
