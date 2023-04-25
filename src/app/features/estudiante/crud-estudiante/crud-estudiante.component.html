@@ -1,0 +1,48 @@
+<div class="estudiantes">
+  <h2>Lista de Estudiantes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Código Estudiantil</th>
+        <th>Identificación</th>
+        <th>Nombre</th>
+        <th>Programa</th>
+        <th>Fecha de Creación</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let estudiante of estudiantes">
+        <td>{{estudiante.codigoEstudiantil}}</td>
+        <td>{{estudiante.identificacion}}</td>
+        <td>{{estudiante.nombre}}</td>
+        <td>{{estudiante.programa}}</td>
+        <td>{{estudiante.fechaCreacion | date: 'dd/MM/yyyy'}}</td>
+        <td><button (click)="deleteEstudiante(estudiante)">Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Añadir Estudiante</h2>
+  <form>
+    <div>
+      <label>Código Estudiantil:</label>
+      <input [(ngModel)]="estudiante.codigoEstudiantil" name="codigoEstudiantil" required>
+    </div>
+    <div>
+      <label>Identificación:</label>
+      <input [(ngModel)]="estudiante.identificacion" name="identificacion" required>
+    </div>
+    <div>
+      <label>Nombre:</label>
+      <input [(ngModel)]="estudiante.nombre" name="nombre" required>
+    </div>
+    <div>
+      <label>Programa:</label>
+      <input [(ngModel)]="estudiante.programa" name="programa" required>
+    </div>
+    <div>
+      <button (click)="addEstudiante()">Agregar</button>
+    </div>
+  </form>
+</div>
